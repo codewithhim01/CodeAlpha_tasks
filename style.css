@@ -1,0 +1,188 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, sans-serif;
+}
+
+body{
+    background: linear-gradient(135deg,#0f2027,#203a43,#2c5364);
+    min-height:100vh;
+    color:white;
+    padding:30px;
+}
+
+/* =========================
+   HEADING
+========================= */
+
+h1{
+    text-align:center;
+    margin-bottom:25px;
+    font-size:3rem;
+    letter-spacing:2px;
+}
+
+/* =========================
+   FILTER BUTTONS
+========================= */
+
+.filters{
+    text-align:center;
+    margin-bottom:30px;
+}
+
+.filters button{
+    padding:12px 22px;
+    margin:8px;
+    border:none;
+    border-radius:30px;
+    background:rgba(255,255,255,0.15);
+    color:white;
+    cursor:pointer;
+    backdrop-filter: blur(10px);
+    transition:0.3s;
+    font-size:16px;
+}
+
+.filters button:hover{
+    background:#00c6ff;
+    transform:translateY(-3px);
+}
+
+/* =========================
+   GALLERY GRID
+========================= */
+
+.gallery{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:20px;
+}
+
+.gallery-item{
+    position:relative;
+    overflow:hidden;
+    border-radius:20px;
+    cursor:pointer;
+    transition:0.4s;
+}
+
+.gallery-item img{
+    width:100%;
+    height:300px;
+    object-fit:cover;
+    transition:0.5s;
+}
+
+/* Hover Effects */
+
+.gallery-item:hover img{
+    transform:scale(1.1);
+    filter:brightness(70%);
+}
+
+.gallery-item::after{
+    content:"View";
+    position:absolute;
+    top:50%;
+    left:50%;
+    transform:translate(-50%,-50%);
+    color:white;
+    font-size:22px;
+    opacity:0;
+    transition:0.4s;
+}
+
+.gallery-item:hover::after{
+    opacity:1;
+}
+
+/* =========================
+   LIGHTBOX
+========================= */
+
+.lightbox{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background:rgba(0,0,0,0.9);
+    display:none;
+    justify-content:center;
+    align-items:center;
+    flex-direction:column;
+    z-index:1000;
+}
+
+.lightbox img{
+    width:80%;
+    max-width:900px;
+    border-radius:15px;
+    animation:zoom 0.4s ease;
+}
+
+@keyframes zoom{
+    from{
+        transform:scale(0.7);
+        opacity:0;
+    }
+    to{
+        transform:scale(1);
+        opacity:1;
+    }
+}
+
+/* Close Button */
+
+.close{
+    position:absolute;
+    top:20px;
+    right:40px;
+    font-size:40px;
+    color:white;
+    cursor:pointer;
+}
+
+/* Navigation Buttons */
+
+.nav-buttons{
+    margin-top:20px;
+}
+
+.nav-buttons button{
+    padding:12px 20px;
+    margin:10px;
+    border:none;
+    border-radius:50px;
+    background:#00c6ff;
+    color:white;
+    cursor:pointer;
+    font-size:16px;
+    transition:0.3s;
+}
+
+.nav-buttons button:hover{
+    background:#0072ff;
+    transform:scale(1.05);
+}
+
+/* =========================
+   RESPONSIVE DESIGN
+========================= */
+
+@media(max-width:768px){
+
+    h1{
+        font-size:2rem;
+    }
+
+    .gallery-item img{
+        height:220px;
+    }
+
+    .lightbox img{
+        width:95%;
+    }
+}
